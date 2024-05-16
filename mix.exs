@@ -64,9 +64,11 @@ defmodule SimpleApp.MixProject do
   defp aliases do
     [
       setup: ["deps.get", "assets.setup", "assets.build"],
-      "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
+      "assets.setup_dev": ["cmd npm i -prefix assets", "esbuild.install --if-missing"],
+      "assets.setup": ["cmd npm i -prefix assets"],
       "assets.build": ["tailwind simple_app", "esbuild simple_app"],
       "assets.deploy": [
+        "cmd npm i -prefix assets",
         "tailwind simple_app --minify",
         "esbuild simple_app --minify",
         "phx.digest"

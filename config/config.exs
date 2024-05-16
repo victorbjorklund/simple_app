@@ -34,6 +34,7 @@ config :esbuild,
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "3.4.0",
+  path: Path.absname("assets/node_modules/.bin/tailwindcss"),
   simple_app: [
     args: ~w(
       --config=tailwind.config.js
